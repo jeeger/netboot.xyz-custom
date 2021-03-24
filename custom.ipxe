@@ -19,6 +19,7 @@ kernel ${asset_url_win}/wimboot
 initrd ${asset_url_win}/bcd BCD
 initrd ${asset_url_win}/boot.sdi boot.sdi
 initrd ${asset_url_win}/boot.wim boot.wim
+imgfree custom.ipxe
 boot || goto custom_exit
 
 :custom_exit
