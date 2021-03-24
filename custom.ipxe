@@ -1,12 +1,25 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu
+### crazytom Windows PE boot
 ###
 
-:start
-echo Hello world!
-sleep 10
+set asset_url http://crazytom:4200
+
+:custom
+menu Custom menu entries
+item win_pe Windows PE
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
 goto custom_exit
 
+:win_pe
+set asset_url_win ${asset_url}/win
+kernel ${asset_url_win}/wimboot
+initrd ${asset_url_win}/bcd BCD
+initrd ${asset_url_win}/boot.sdi boot.sdi
+initrd ${asset_url_win}/boot.wim boot.wim
+boot || goto custom_exit
+
 :custom_exit
-exit 0
+exit
