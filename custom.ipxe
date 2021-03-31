@@ -8,6 +8,7 @@ set asset_url http://crazytom:4200
 :custom
 menu Custom menu entries
 item win_pe Windows PE
+item iso_r1cuj61wd Lenovo ISO
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
@@ -20,6 +21,12 @@ kernel ${asset_url_win}/wimboot
 initrd ${asset_url_win}/bcd BCD
 initrd ${asset_url_win}/boot.sdi boot.sdi
 initrd ${asset_url_win}/boot.wim boot.wim
+boot || goto custom_exit
+
+:iso_r1cuj61wd
+imgfree
+kernel memdisk
+initrd ${asset_url}/r1cuj61wd.iso
 boot || goto custom_exit
 
 :custom_exit
