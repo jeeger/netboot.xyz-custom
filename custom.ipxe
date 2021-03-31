@@ -25,7 +25,7 @@ boot || goto custom_exit
 
 :iso_r1cuj61wd
 imgfree
-kernel memdisk
+kernel ${memdisk} raw iso
 initrd ${asset_url}/r1cuj61wd.iso
 boot || goto custom_exit
 
